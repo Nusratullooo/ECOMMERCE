@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+
+<head>
+    <title>Order Complete</title>
+    {% include 'includes/head.html' %}
+</head>
+
+<body class="page-template belle cart-variant1">
+
+<div id="pre-loader">
+    <img src="{% static 'assets/images/loader.gif' %}" alt="Loading..."/>
+</div>
+
+<div class="pageWrapper">
+
+    {% include 'includes/header.html' %}
+
+    <div id="page-content">
+        <div class="page section-header text-center">
+            <div class="page-title">
+                <div class="wrapper"><h1 class="page-width">Shopping Success</h1></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                    <div class="alert alert-success text-uppercase" role="alert">
+                        <i class="icon anm anm-truck-l icon-large"></i> &nbsp;<strong>Congratulations!</strong> Your
+                        order has been accepted
+                    </div>
+
+                    <form action="#" method="post" class="cart style2">
+                        {% csrf_token %}
+                        <table>
+                            <thead class="cart__row cart__header">
+                            <tr>
+                                <th class="text-center">User</th>
+                                <th class="text-center">Code</th>
+                                <th colspan="2" class="text-center">Product</th>
+                                <th class="text-center">Address</th>
+                                <th class="text-right">Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for rs in order %}
+                                <tr class="cart__row border-bottom line1 cart-flex border-top">
+                                    <td class="cart__price-wrapper cart-flex-item">
+                                        <span>{{ rs.user }}</span>
+                                    </td>
+                                    <td class="cart__update-wrapper cart-flex-item text-center">
+                                        <span>{{ rs.order.code }}</span>
+                                    </td>
+                                    <td class="cart__image-wrapper cart-flex-item">
+                                        <img class="cart__image" src="{{ rs.product.image.url }}">
+                                    </td>
+                                    <td class="cart__meta small--text-left cart-flex-item text-center">
+                                        <div class="list-view-item__title">
+                                            {{ rs.product.title }}
+                                        </div>
+                                        <hr>
+                                        <div class="cart__meta-text">
+                                            Size: {{ rs.size }}<br>
+                                        </div>
+                                        <br>
+                                        <div class="cart__meta-text">
+                                            Color: &nbsp;
+                                            <div style="background-color: {{ rs.color }}; width: 32px; height: 18px; display: inline-block;"></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right small--hide cart-price">
+                                        <div><span class="money">{{ rs.order.address }}</span></div>
+                                    </td>
+                                    <td class="text-right small--hide cart-price">
+                                        <div><span class="money">{{ rs.order.status }}</span></div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {% include 'includes/footer.html' %}
+
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+
+
+    <script src="{% static 'assets/js/vendor/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/modernizr-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/jquery.cookie.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/lazysizes.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+
+</div>
+
+</body>
+
+</html>

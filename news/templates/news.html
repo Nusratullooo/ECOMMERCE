@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+
+<head>
+    <title>News</title>
+    {% include 'includes/head.html' %}
+</head>
+
+<body class="template-blog belle">
+
+<div id="pre-loader">
+    <img src="{% static 'assets/images/loader.gif' %}" alt="Loading..."/>
+</div>
+
+<div class="pageWrapper">
+
+    {% include 'includes/header.html' %}
+
+    <div id="page-content">
+        <div class="page section-header text-center mb-0">
+            <div class="page-title">
+                <div class="wrapper"><h1 class="page-width">News</h1></div>
+            </div>
+        </div>
+        <div class="bredcrumbWrap">
+            <div class="container breadcrumbs">
+                <a href="{% url 'home' %}" title="Back to the home page">Home</a><span aria-hidden="true">›</span><span>News</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                    {% if news %}
+                        <div class="custom-search">
+                            <form action="" method="get"
+                                  class="input-group search-header search" role="search" style="position: relative;">
+                                <input class="search-header__input search__input input-group__field" type="search"
+                                       name="q"
+                                       placeholder="Search ..." aria-label="Search" autocomplete="off">
+                                <span class="input-group__btn"><button class="btnSearch" type="submit"> <i
+                                        class="icon anm anm-search-l"></i> </button></span>
+                            </form>
+                        </div>
+                        <div class="blog--list-view blog--grid-load-more">
+                        {% for rs in news %}
+                            <div class="article">
+                                <a class="article_featured-image" href="{% url 'news_detail' rs.id %}"><img
+                                        class="blur-up lazyload"
+                                        data-src="{{ rs.image.url }}"
+                                        src="{{ rs.image.url }}"
+                                        alt="It's all about how you wear"></a>
+                                <h2 class="h3"><a href="{% url 'news_detail' rs.id %}">{{ rs.title }}</a></h2>
+                                <ul class="publish-detail">
+                                    <li><i class="anm anm-user-al" aria-hidden="true"></i> {{ rs.user_name }}</li>
+                                    <li><i class="icon anm anm-clock-r"></i>
+                                        <time datetime="2017-05-02">{{ rs.create_at }}</time>
+                                    </li>
+                                    <li>
+                                        <ul class="inline-list">
+                                            <li><i class="icon anm anm-comments-l"></i> <a
+                                                    href="{% url 'news_detail' rs.id %}"> {{ comment_news_all }}
+                                                comments</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="rte">
+                                    <p>{{ rs.description }}</p>
+                                </div>
+                                <p><a href="{% url 'news_detail' rs.id %}" class="btn btn-secondary btn--small">Read
+                                    more <i
+                                            class="fa fa-caret-right"
+                                            aria-hidden="true"></i></a>
+                                </p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <h1>No news yet, but there will definitely be
+                        <h1>
+                    {% endif %}
+                    <div class="loadmore-post">
+                        <div class="blog-pagination pagination-center">
+                            {% include 'paginator.html' with page=news %}
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'includes/footer.html' %}
+
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+
+
+    <script src="{% static 'assets/js/vendor/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/modernizr-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/jquery.cookie.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/lazysizes.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+
+</div>
+
+</body>
+
+</html>

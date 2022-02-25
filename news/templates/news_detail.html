@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+
+<head>
+    <title>News Detail</title>
+    {% include 'includes/head.html' %}
+</head>
+
+<body class="template-blog belle">
+
+<div id="pre-loader">
+    <img src="{% static 'assets/images/loader.gif' %}" alt="Loading..."/>
+</div>
+
+<div class="pageWrapper">
+
+    {% include 'includes/header.html' %}
+
+    <div id="page-content">
+        <div class="page section-header text-center mb-0">
+            <div class="page-title">
+                <div class="wrapper"><h1 class="page-width">News detail</h1></div>
+            </div>
+        </div>
+        <div class="bredcrumbWrap">
+            <div class="container breadcrumbs">
+                <a href="{% url 'home' %}" title="Back to the home page">Home</a><span aria-hidden="true">›</span>
+                <a href="{% url 'news' %}" title="Back to News">News</a><span aria-hidden="true">›</span><span>News Detail</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                    <div class="blog--list-view">
+
+                        <div class="article">
+                            <img class="blur-up lazyload"
+                                 data-src="{{ news_detail.image.url }}"
+                                 src="{{ news_detail.image.url }}"
+                                 alt="It's all about how you wear">
+                            <br>
+                            <br>
+                            <h1>{{ news_detail.title }}</h1>
+                            <ul class="publish-detail">
+                                <li><i class="anm anm-user-al" aria-hidden="true"></i> {{ news_detail.user_name }}</li>
+                                <li><i class="icon anm anm-clock-r"></i>
+                                    <time datetime="2017-05-02">{{ news_detail.create_at }}</time>
+                                </li>
+                                <li>
+                                    <ul class="inline-list">
+                                        <li><i class="icon anm anm-comments-l"></i> {{ comment_news_all }} comments</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="rte">
+                                <p>{{ news_detail.description }}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <h2>Comments</h2>
+                        <hr>
+                        {% for rs in comment_news %}
+                            <div class="spr-reviews">
+                                <div class="spr-review">
+                                    <div class="spr-review-content">
+                                        <p class="spr-review-content-body">{{ rs.comment }}</p>
+                                    </div>
+                                    <div class="spr-review-header">
+                                        <h2>{{ rs.name }}</h2>
+                                        <span class="spr-review-header-byline"><strong>{{ rs.email }}</strong> on <strong>{{ rs.create_at }}</strong></span>
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        <div class="formFeilds contact-form form-vertical">
+                            <form method="post" action="/news/comment_news/{{ news_detail.id }}" class="comment-form">
+                                {% csrf_token %}
+                                <h2>Leave a comment</h2>
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" name="name" placeholder="Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <input type="email" name="email" placeholder="Email" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <textarea rows="10" name="comment" placeholder="Your Message"
+                                                      required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                        <p class="fine-print">Please note, comments must be approved before they are
+                                            published</p>
+                                        <input type="submit" class="btn" value="Send Message">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {% include 'includes/footer.html' %}
+
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+
+
+    <script src="{% static 'assets/js/vendor/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/modernizr-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/jquery.cookie.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/lazysizes.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+
+</div>
+
+</body>
+
+</html>

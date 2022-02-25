@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+
+<head>
+    <title>Shopcart</title>
+    {% include 'includes/head.html' %}
+</head>
+
+<body class="page-template belle cart-variant1">
+
+<div id="pre-loader">
+    <img src="{% static 'assets/images/loader.gif' %}" alt="Loading..."/>
+</div>
+
+<div class="pageWrapper">
+
+    {% include 'includes/header.html' %}
+
+    <div id="page-content">
+        <div class="page section-header text-center">
+            <div class="page-title">
+                <div class="wrapper"><h1 class="page-width">Shopping Cart</h1></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                    {#                    <div class="alert alert-success text-uppercase" role="alert">#}
+                    {#                        <i class="icon anm anm-truck-l icon-large"></i> &nbsp;<strong>Congratulations!</strong> You've#}
+                    {#                        got free shipping!#}
+                    {#                    </div>#}
+
+                    <form action="#" method="post" class="cart style2">
+                        {% if shopcart %}
+                            <table>
+                                <thead class="cart__row cart__header">
+
+                                <tr>
+
+                                    <th colspan="2" class="text-center">Product</th>
+                                    <th class="text-center">Price</th>
+                                    <th class="text-center">Quantity</th>
+                                    <th class="text-right">Total</th>
+                                    <th class="action">&nbsp;</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for rs in shopcart %}
+                                    <tr class="cart__row border-bottom line1 cart-flex border-top">
+                                        <td class="cart__image-wrapper cart-flex-item"><img class="cart__image"
+                                                                                            src="{{ rs.product.image.url }}">
+                                        </td>
+                                        <td class="cart__meta small--text-left cart-flex-item text-center">
+                                            <div class="list-view-item__title">
+                                                {{ rs.product.title }}
+                                            </div>
+                                            <hr>
+                                            <div class="cart__meta-text">
+                                                Size: &nbsp;{{ rs.size }}&nbsp;<br>
+                                            </div>
+                                            <br>
+                                            <div class="cart__meta-text">
+                                                Color: &nbsp;<div
+                                                    style="background-color: {{ rs.color }}; width: 32px; height: 18px; display: inline-block;">
+                                                &nbsp;
+                                            </div>
+                                            </div>
+                                        </td>
+                                        <td class="cart__price-wrapper cart-flex-item">
+                                            <span class="money">${{ rs.product.sell_price }}</span>
+                                        </td>
+                                        <td class="cart__update-wrapper cart-flex-item text-center">
+                                            <span>{{ rs.quantity }}</span>
+                                        </td>
+                                        <td class="text-right small--hide cart-price">
+                                            <div><span class="money">${{ rs.amount }}</span></div>
+                                        </td>
+                                        <td class="text-center small--hide"><a href="{% url 'deletefromcart' rs.id %}"
+                                                                               class="btn btn--secondary cart__remove"
+                                                                               onclick="return confirm('Delete! Are you sure?')">
+                                            <i class="icon icon anm anm-times-l"></i></a></td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    {% if shopcart %}
+                                        {% csrf_token %}
+                                        <td colspan="6" class="text-right">
+                                            {% csrf_token %}
+                                            <a href="{% url 'deleteallfromcart' %}"
+                                               onclick="return confirm('Delete! Are you sure?')">
+                                                <button type="submit" class="btn btn-secondary btn--small  small--hide">
+                                                    Clear All
+                                                </button>
+                                            </a>
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                                </tfoot>
+                            </table>
+                        {% else %}
+                            <h1 class="text-center"><a href="{% url 'home' %}">You have not selected a product yet</a>
+                            </h1>
+                            <hr>
+                        {% endif %}
+                    </form>
+
+
+                </div>
+
+
+                <div class="container mt-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 offset-8 cart__footer">
+                            <div class="solid-border">
+                                <div class="row border-bottom pb-2">
+                                    <span class="col-12 col-sm-6 cart__subtotal-title">Total quantity</span>
+                                    <span class="col-12 col-sm-6 text-right"><span class="money">{{ total_qty }}</span></span>
+                                </div>
+                                <div class="row border-bottom pb-2 pt-2">
+                                    <span class="col-12 col-sm-6 cart__subtotal-title">Total products</span>
+                                    <span class="col-12 col-sm-6 text-right"><span
+                                            class="money">{{ shopcart_count }}</span></span>
+                                </div>
+                                <div class="row border-bottom pb-2 pt-5">
+                                    <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Total amount</strong></span>
+                                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span
+                                            class="money">${{ total }}</span></span>
+                                </div>
+                                <br>
+                                <p class="cart_tearm">
+                                    <label>
+                                        <input type="checkbox" name="tearm" class="checkbox" value="tearm" required="">
+                                        I agree with the terms and conditions
+                                    </label>
+                                </p>
+                                <a href="{% url 'orderproduct' %}">
+                                    <input type="submit" name="checkout" id="cartCheckout"
+                                           class="btn btn--small-wide checkout" value="Proceed To Checkout">
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    {% include 'includes/footer.html' %}
+
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+
+
+    <script src="{% static 'assets/js/vendor/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/modernizr-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/jquery.cookie.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/lazysizes.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+
+</div>
+
+</body>
+
+</html>

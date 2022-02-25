@@ -1,0 +1,81 @@
+{% load static %}
+{% load i18n %}
+
+<footer id="footer">
+    <div class="newsletter-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-7 w-100 d-flex justify-content-start align-items-center">
+                    <div class="display-table">
+                        <div class="display-table-cell footer-newsletter">
+                            <div class="section-header text-center">
+                                <label class="h2"><span>{% trans 'sign up for' %} </span>{% trans 'newsletter' %}
+                                </label>
+                            </div>
+                            <form action="{% url 'newsLetter' %}" method="post">
+                                {% csrf_token %}
+                                <div class="input-group">
+                                    <input type="email" class="input-group__field newsletter__input" name="email"
+                                           placeholder="Email address" required>
+                                    <span class="input-group__btn">
+                                                <button type="submit" class="btn newsletter__submit">
+                                                    <span class="newsletter__submit-text--large">{% trans 'Subscribe' %}</span>
+                                                </button>
+                                        </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 footer-links">
+                        <h4 class="h4">{% trans 'Categories' %}</h4>
+                        <ul>
+                            {% for rs in category %}
+                                <li><a href="{% url 'category' rs.id rs.slug %}">{{ rs.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 footer-links">
+                        <h4 class="h4">{% trans 'Information' %}</h4>
+                        <ul>
+                            <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
+                            <li><a href="{% url 'news' %}">{% trans 'News' %}</a></li>
+                            <li><a href="{% url 'client' %}">{% trans 'My Account' %}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 footer-links">
+                        <h4 class="h4">{% trans 'Services' %}</h4>
+                        <ul>
+                            <li><a href="{% url 'about' %}">{% trans 'About us' %}</a></li>
+                            <li><a href="{% url 'faq' %}">{% trans 'FAQs' %}</a></li>
+                            <li><a href="{% url 'contact' %}">{% trans 'Contact Us' %}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 contact-box">
+                        <h4 class="h4">{% trans 'Contact Us' %}</h4>
+                        <ul class="addressFooter">
+                            {% for rs in information %}
+                                <li><i class="icon anm anm-map-marker-al"></i>
+                                    <p>{{ rs.address }}</p>
+                                </li>
+                                <li class="phone"><i class="icon anm anm-phone-s"></i>
+                                    <a href="tel:{{ rs.phone }}"><p>{{ rs.phone }}</p></a></li>
+                                <li class="email"><i class="icon anm anm-envelope-l"></i>
+                                    <a href="mailto:{{ rs.email }}"><p>{{ rs.email }}</p></a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <br>
+        </div>
+    </div>
+</footer>

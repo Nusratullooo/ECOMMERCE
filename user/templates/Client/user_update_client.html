@@ -1,0 +1,145 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Melody Admin</title>
+    <link rel="stylesheet" href="{% static "melody_static/vendors/iconfonts/font-awesome/css/all.min.css" %}">
+    <link rel="stylesheet" href="{% static "melody_static/vendors/css/vendor.bundle.base.css" %}">
+    <link rel="stylesheet" href="{% static "melody_static/vendors/css/vendor.bundle.addons.css" %}">
+    <link rel="stylesheet" href="{% static "melody_static/css/style.css" %}">
+    <link rel="shortcut icon" href="{% static 'melody_static/images/favicon.png' %}"/>
+</head>
+
+<body>
+
+<div class="container-scroller">
+
+    {% include 'Menu/client_top_dashbourd.html' %}
+
+    <div class="container-fluid page-body-wrapper">
+
+        {% include 'Menu/dashbourd_theme.html' %}
+
+        {% include 'Menu/client_dashbourd.html' %}
+
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="page-header">
+                </div>
+                <div class="row">
+                    <div class="col-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">{% trans 'Update Client' %}</h4>
+                                <p class="card-description">
+
+                                </p>
+                                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">{% trans 'User Name' %}</label>
+                                        <input type="text" name="username" value="{{ client.user.username }}"
+                                               class="form-control" id="exampleInputName1" placeholder="User Name">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">{% trans 'First Name' %}</label>
+                                        <input type="text" name="first_name" value="{{ client.user.first_name }}"
+                                               class="form-control" id="exampleInputName1" placeholder="First Name">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">{% trans 'Lastname' %}</label>
+                                        <input type="text" name="last_name" value="{{ client.user.last_name }}"
+                                               class="form-control" id="exampleInputName1" placeholder="Last Name">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">{% trans 'Email' %}</label>
+                                        <input type="email" name="email" value="{{ client.user.email }}"
+                                               class="form-control" id="exampleInputEmail3" placeholder="Email">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">{% trans 'Phone' %}</label>
+                                        <input type="tel" name="phone" value="{{ client.phone }}" class="form-control"
+                                               id="exampleInputPassword4" placeholder="Phone">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">{% trans 'Address' %}</label>
+                                        <input type="text" name="address" value="{{ client.address }}"
+                                               class="form-control" id="exampleInputPassword4" placeholder="Address">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">{% trans 'City' %}</label>
+                                        <input type="text" name="city" value="{{ client.city }}" class="form-control"
+                                               id="exampleInputPassword4" placeholder="City">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">{% trans 'Country' %}</label>
+                                        <input type="text" name="country" value="{{ client.country }}"
+                                               class="form-control" id="exampleInputPassword4" placeholder="Country">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Image' %}</label>
+                                        <input type="file" name="image" class="file-upload-default">
+                                        <div class="input-group col-xs-12">
+                                            <input type="text" name="image" class="form-control file-upload-info"
+                                                   disabled placeholder="Upload Image">
+                                            <span class="input-group-append">
+                          <button class="file-upload-browse btn btn-primary" name="image"
+                                  type="button">{% trans 'Upload' %}</button>
+                        </span>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mr-2">{% trans 'Submit' %}</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+            <footer class="footer">
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a
+                            href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
+                            class="far fa-heart text-danger"></i></span>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="{% static "melody_static/vendors/js/vendor.bundle.base.js" %}"></script>
+<script src="{% static "melody_static/vendors/js/vendor.bundle.addons.js" %}"></script>
+<script src="{% static "melody_static/js/off-canvas.js" %}"></script>
+<script src="{% static "melody_static/js/hoverable-collapse.js" %}"></script>
+<script src="{% static "melody_static/js/misc.js" %}"></script>
+<script src="{% static "melody_static/js/settings.js" %}"></script>
+<script src="{% static "melody_static/js/todolist.js" %}"></script>
+<script src="{% static "melody_static/js/file-upload.js" %}"></script>
+<script src="{% static "melody_static/js/typeahead.js" %}"></script>
+<script src="{% static "melody_static/js/select2.js" %}"></script>
+
+</body>
+
+
+</html>

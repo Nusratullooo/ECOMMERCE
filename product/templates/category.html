@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+
+<head>
+    <title>Category</title>
+    {% include 'includes/head.html' %}
+</head>
+
+<body class="template-collection belle">
+
+<div id="pre-loader">
+    <img src="{% static 'assets/images/loader.gif' %}" alt="Loading..."/>
+</div>
+
+<div class="pageWrapper">
+
+    {% include 'includes/header.html' %}
+
+    <div id="page-content">
+        <div class="collection-header">
+            <div class="collection-hero">
+                <div class="collection-hero"><img class="blur-up lazyload"
+                                                  data-src="{% static 'assets/images/slideshow-banners/home4-banner.jpg' %}"
+                                                  src="{% static 'assets/images/slideshow-banners/home4-banner.jpg' %}"
+                                                  alt="Women" title="Women" height="100"/>
+                </div>
+                <div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">Product
+                    Labels</h1></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                    {% for rs in categories %}
+                        <div class="category-description">
+                            <h3>Category Description</h3>
+                            <p>{{ rs.description }}</p>
+                        </div>
+                    {% endfor %}
+                    <hr>
+                    <div class="productList">
+                        <div class="grid-products grid--view-items">
+                            <div class="row">
+                                {% for rs in products %}
+                                    <div class="col-6 col-sm-6 col-md-4 col-lg-4 item">
+                                        <div class="product-image">
+                                            <a href="{% url 'product' rs.id rs.slug %}">
+                                                <img class="primary blur-up lazyload"
+                                                     data-src="{{ rs.image.url }}"
+                                                     src="{{ rs.image.url }}" alt="image"
+                                                     title="product">
+                                                <img class="hover blur-up lazyload"
+                                                     data-src="{{ rs.image.url }}"
+                                                     src="{{ rs.image.url }}" alt="image"
+                                                     title="product">
+                                            </a>
+                                            <div class="button-set">
+                                                <a href="javascript:void(0)" title="Quick View"
+                                                   class="quick-view-popup quick-view" data-toggle="modal"
+                                                   data-target="#content_quickview">
+                                                    <i class="icon anm anm-search-plus-r"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-details text-center">
+                                            <div class="product-name">
+                                                <a href="{% url 'product' rs.id rs.slug %}">{{ rs.title }}</a>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="old-price">{{ rs.old_price }}</span>
+                                                <span class="price">{{ rs.sell_price }}</span>
+                                            </div>
+                                            <div class="product-review">
+                                                <i class="font-13 fa fa-star"></i>
+                                                <i class="font-13 fa fa-star"></i>
+                                                <i class="font-13 fa fa-star"></i>
+                                                <i class="font-13 fa fa-star-o"></i>
+                                                <i class="font-13 fa fa-star-o"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    {% include 'includes/footer.html' %}
+
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+
+
+    <script src="{% static 'assets/js/vendor/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/modernizr-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/jquery.cookie.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/lazysizes.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+
+</div>
+
+</body>
+
+</html>

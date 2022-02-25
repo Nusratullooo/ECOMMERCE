@@ -1,0 +1,219 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+
+<head>
+    <title>Home</title>
+    {% include 'includes/head.html' %}
+</head>
+
+<body class="template-index belle template-index-belle">
+
+<div id="pre-loader">
+    <img src="{% static 'assets/images/loader.gif' %}" alt="{% trans 'Loading...' %}"/>
+</div>
+
+<div class="pageWrapper">
+
+    {% include 'includes/header.html' %}
+
+    <div id="page-content">
+
+        <div class="slideshow slideshow-wrapper pb-section sliderFull">
+            <div class="home-slideshow">
+                <div class="slide">
+                    <div class="blur-up lazyload bg-size">
+                        <img class="blur-up lazyload bg-img"
+                             src="{% static 'assets/images/slideshow-banners/belle-banner1.jpg' %}">
+                        <div class="slideshow__text-wrap slideshow__overlay classic bottom">
+                            <div class="slideshow__text-content bottom">
+                                <div class="wrap-caption center">
+                                    <h2 class="h1 mega-title slideshow__title">{% trans 'Shop Our New Collection' %}</h2>
+                                    <span class="mega-subtitle slideshow__subtitle">{% trans 'From Hight to low, classic or modern. We have you covered' %}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="blur-up lazyload bg-size">
+                        <img class="blur-up lazyload bg-img"
+                             src="{% static 'assets/images/parallax-banners/parallax-banner.jpg' %}">
+                        <div class="slideshow__text-wrap slideshow__overlay classic bottom">
+                            <div class="slideshow__text-content bottom">
+                                <div class="wrap-caption center">
+                                    <h2 class="h1 mega-title slideshow__title">{% trans 'Summer Bikini Collection' %}</h2>
+                                    <span class="mega-subtitle slideshow__subtitle">{% trans 'Save up to 50% off this weekend only' %}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-slider-product section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="section-header text-center">
+                            <h2 class="h2">{% trans 'New products' %}</h2>
+                            <p>{% trans 'New products that have just been added' %}</p>
+                        </div>
+                        <div class="tabs-listing">
+                            <div class="tab_container">
+                                <div class="tab_content grid-products">
+                                    <div class="productSlider">
+                                        {% for rs in product %}
+                                            <div class="col-12 item">
+                                                <div class="product-image">
+                                                    <a href="{% url 'product' rs.id rs.slug %}">
+                                                        <img class="primary blur-up lazyload" src="{{ rs.image.url }}">
+                                                        <img class="hover blur-up lazyload" src="{{ rs.image.url }}">
+                                                    </a>
+                                                </div>
+                                                <div class="product-details text-center">
+                                                    <div class="product-name">
+                                                        <a href="#">{{ rs.title }}</a>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <span class="old-price">${{ rs.old_price }}</span>
+                                                        <span class="price">${{ rs.sell_price }}</span>
+                                                    </div>
+                                                    <div class="product-review">
+                                                        <i class="font-13 fa fa-star"></i>
+                                                        <i class="font-13 fa fa-star"></i>
+                                                        <i class="font-13 fa fa-star"></i>
+                                                        <i class="font-13 fa fa-star-o"></i>
+                                                        <i class="font-13 fa fa-star-o"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="collection-box section">
+            <div class="container-fluid">
+                <div class="collection-grid">
+                    {% for rs in category %}
+                        <div class="collection-grid-item">
+                            <a href="{% url 'category' rs.id rs.slug %}" class="collection-grid-item__link">
+                                <img class="blur-up lazyload" src="{{ rs.image.url }}">
+                                <div class="collection-grid-item__title-wrapper">
+                                    <h3 class="collection-grid-item__title btn btn--secondary no-border">{{ rs.title }}</h3>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="product-rows section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="section-header text-center">
+                            <h2 class="h2">{% trans 'Popular Products' %}</h2>
+                            <p>{% trans 'Popular products that are bought most often' %}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-products">
+                    <div class="row">
+                        {% for rs in product %}
+                            <div class="col-6 col-sm-6 col-md-4 col-lg-4 item grid-view-item style2">
+                                <div class="grid-view_image">
+                                    <a href="{% url 'product' rs.id rs.slug %}" class="grid-view-item__link">
+                                        <img class="grid-view-item__image primary blur-up lazyload"
+                                             src="{{ rs.image.url }}">
+                                        <img class="grid-view-item__image hover blur-up lazyload"
+                                             src="{{ rs.image.url }}">
+                                    </a>
+                                    <div class="product-details hoverDetails text-center mobile">
+                                        <div class="product-name">
+                                            <h1>{{ rs.title }}</h1>
+                                        </div>
+                                        <br>
+                                        <div class="product-price">
+                                            <h1 class="old-price">${{ rs.old_price }}</h1>
+                                            <h1 class="price">${{ rs.sell_price }}</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="store-feature section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <ul class="display-table store-info">
+                            <li class="display-table-cell">
+                                <i class="icon anm anm-truck-l"></i>
+                                <h5>{% trans 'Free Shipping & Return' %}</h5>
+                                <span class="sub-text">{% trans 'Free shipping on all Tashkent orders' %}</span>
+                            </li>
+                            <li class="display-table-cell">
+                                <i class="icon anm anm-dollar-sign-r"></i>
+                                <h5>{% trans 'Money Guarantee' %}</h5>
+                                <span class="sub-text">{% trans '30 days money back guarantee' %}</span>
+                            </li>
+                            <li class="display-table-cell">
+                                <i class="icon anm anm-comments-l"></i>
+                                <h5>{% trans 'Online Support' %}</h5>
+                                <span class="sub-text">{% trans 'We support online 24 / 7 on day' %}</span>
+                            </li>
+                            <li class="display-table-cell">
+                                <i class="icon anm anm-credit-card-front-r"></i>
+                                <h5>{% trans 'Secure Payments' %}</h5>
+                                <span class="sub-text">{% trans 'All payment are Secured and trusted' %}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {% include 'includes/footer.html' %}
+
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+
+
+    <script src="{% static 'assets/js/vendor/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/modernizr-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/jquery.cookie.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/lazysizes.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,224 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-06 16:04+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: user/templates/Category/category_add.html:260
+#: user/templates/Category/category_edit.html:260
+#: user/templates/Category/category_update.html:261
+#: user/templates/Creator/creator.html:263
+#: user/templates/Creator/creator.html:265
+#: user/templates/Creator/creator.html:291
+#: user/templates/Product/product_add.html:267
+#: user/templates/Product/product_edit.html:267
+#: user/templates/Product/product_update.html:269
+msgid "Category"
+msgstr "Категория"
+
+#: user/templates/Category/category_add.html:267
+#: user/templates/Category/category_edit.html:268
+#: user/templates/Category/category_update.html:270
+#: user/templates/Product/product_add.html:274
+#: user/templates/Product/product_edit.html:274
+#: user/templates/Product/product_update.html:275
+msgid "Title [EN]"
+msgstr "Название [EN]"
+
+#: user/templates/Category/category_add.html:273
+#: user/templates/Category/category_edit.html:274
+#: user/templates/Category/category_update.html:276
+#: user/templates/Product/product_add.html:280
+#: user/templates/Product/product_edit.html:280
+#: user/templates/Product/product_update.html:281
+msgid "Title [RU]"
+msgstr "Название [RU]"
+
+#: user/templates/Category/category_add.html:279
+#: user/templates/Category/category_edit.html:280
+#: user/templates/Category/category_update.html:282
+#: user/templates/Product/product_add.html:286
+#: user/templates/Product/product_edit.html:286
+#: user/templates/Product/product_update.html:287
+msgid "Title [UZ]"
+msgstr "Название [UZ]"
+
+#: user/templates/Category/category_add.html:286
+#: user/templates/Category/category_edit.html:294
+#: user/templates/Product/product_add.html:305
+#: user/templates/Product/product_edit.html:305
+msgid "Image"
+msgstr "Изображение"
+
+#: user/templates/Category/category_add.html:293
+#: user/templates/Category/category_edit.html:301
+#: user/templates/Product/product_add.html:312
+#: user/templates/Product/product_edit.html:312
+msgid "Upload"
+msgstr "Загрузить"
+
+#: user/templates/Category/category_add.html:299
+#: user/templates/Category/category_edit.html:287
+#: user/templates/Category/category_update.html:288
+#: user/templates/Product/product_add.html:319
+#: user/templates/Product/product_edit.html:318
+#: user/templates/Product/product_update.html:306
+msgid "Slug"
+msgstr "Slug"
+
+#: user/templates/Category/category_add.html:305
+#: user/templates/Category/category_edit.html:325
+#: user/templates/Category/category_update.html:295
+#: user/templates/Product/product_add.html:325
+#: user/templates/Product/product_edit.html:324
+#: user/templates/Product/product_update.html:312
+msgid "Status"
+msgstr "Статус"
+
+#: user/templates/Category/category_add.html:313
+#: user/templates/Category/category_edit.html:307
+#: user/templates/Category/category_update.html:301
+#: user/templates/Product/product_add.html:333
+#: user/templates/Product/product_edit.html:332
+#: user/templates/Product/product_update.html:318
+msgid "Description [EN]"
+msgstr "Описание [EN]"
+
+#: user/templates/Category/category_add.html:319
+#: user/templates/Category/category_edit.html:313
+#: user/templates/Category/category_update.html:308
+#: user/templates/Product/product_add.html:339
+#: user/templates/Product/product_edit.html:338
+#: user/templates/Product/product_update.html:324
+msgid "Description [RU]"
+msgstr "Описание [RU]"
+
+#: user/templates/Category/category_add.html:325
+#: user/templates/Category/category_edit.html:319
+#: user/templates/Category/category_update.html:314
+#: user/templates/Product/product_add.html:345
+#: user/templates/Product/product_edit.html:344
+#: user/templates/Product/product_update.html:330
+msgid "Description [UZ]"
+msgstr "Описание [UZ]"
+
+#: user/templates/Category/category_add.html:329
+#: user/templates/Category/category_edit.html:331
+#: user/templates/Product/product_add.html:349
+#: user/templates/Product/product_edit.html:348
+msgid "Submit"
+msgstr "Отправить"
+
+#: user/templates/Category/category_update.html:320
+#: user/templates/Product/product_update.html:336
+msgid "Edit"
+msgstr "Изменить"
+
+#: user/templates/Category/category_update.html:323
+#: user/templates/Product/product_update.html:339
+msgid "Delete"
+msgstr "Удалить"
+
+#: user/templates/Creator/creator.html:110
+msgid "Settings"
+msgstr "Настройки"
+
+#: user/templates/Creator/creator.html:249
+msgid "Dashboard"
+msgstr "Панель управления"
+
+#: user/templates/Creator/creator.html:258
+msgid "New users"
+msgstr "Новые пользователи"
+
+#: user/templates/Creator/creator.html:260
+msgid "New Users"
+msgstr "Новые пользователи"
+
+#: user/templates/Creator/creator.html:268
+#: user/templates/Creator/creator.html:270
+#: user/templates/Product/product_add.html:260
+#: user/templates/Product/product_edit.html:260
+#: user/templates/Product/product_update.html:261
+msgid "Product"
+msgstr "Товар"
+
+#: user/templates/Creator/creator.html:273
+#: user/templates/Creator/creator.html:275
+msgid "Order"
+msgstr "Заказ"
+
+#: user/templates/Creator/creator.html:278
+#: user/templates/Creator/creator.html:280
+msgid "Contact"
+msgstr "Контакт"
+
+#: user/templates/Creator/creator.html:293
+msgid "Count"
+msgstr "Количество"
+
+#: user/templates/Creator/creator.html:300
+#: user/templates/Creator/creator.html:361
+msgid "CATEGORY"
+msgstr "КАТЕГОРИЯ"
+
+#: user/templates/Creator/creator.html:303
+#: user/templates/Creator/creator.html:352
+msgid "TITLE"
+msgstr "НАЗВАНИЕ"
+
+#: user/templates/Creator/creator.html:306
+msgid "STATUS"
+msgstr "СТАТУС"
+
+#: user/templates/Creator/creator.html:309
+msgid "CREATE AT"
+msgstr "СОЗДАН"
+
+#: user/templates/Creator/creator.html:349
+msgid "PRODUCT"
+msgstr "ТОВАР"
+
+#: user/templates/Creator/creator.html:355
+msgid "OLD PRICE"
+msgstr "СТАРАЯ ЦЕНА"
+
+#: user/templates/Creator/creator.html:358
+msgid "SELL PRICE"
+msgstr "НОВАЯ ЦЕНА"
+
+#: user/templates/Creator/creator.html:396
+msgid "Copyright © 2022. All rights reserved"
+msgstr "Copyright © 2022. Все права защищены"
+
+#: user/templates/Creator/creator.html:397
+msgid "Author"
+msgstr "Автор"
+
+#: user/templates/Product/product_add.html:292
+#: user/templates/Product/product_edit.html:292
+#: user/templates/Product/product_update.html:293
+msgid "Old Price"
+msgstr "Старая цена"
+
+#: user/templates/Product/product_add.html:298
+#: user/templates/Product/product_edit.html:298
+#: user/templates/Product/product_update.html:299
+msgid "Sell Price"
+msgstr "Новая цена"

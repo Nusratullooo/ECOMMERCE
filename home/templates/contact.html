@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+
+<head>
+    <title>Contact Us</title>
+    {% include 'includes/head.html' %}
+</head>
+
+<body class="contact-template page-template belle">
+
+<div id="pre-loader">
+    <img src="{% static 'assets/images/loader.gif' %}" alt="Loading..."/>
+</div>
+
+<div class="pageWrapper">
+
+    {% include 'includes/header.html' %}
+
+    <div id="page-content">
+        <div class="page section-header text-center">
+            <div class="page-title">
+                <div class="wrapper"><h1 class="page-width">Contact Us</h1></div>
+            </div>
+        </div>
+        <div class="map-section map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1497.217745888127!2d69.29535764699816!3d41.36462220198782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef3083b0bf989%3A0xda4151178d6c8c81!2sELEGANT%20STUDY!5e0!3m2!1sru!2s!4v1641915929858!5m2!1sru!2s"
+                    height="350" allowfullscreen></iframe>
+            <div class="container">
+                <div class="row">
+                    <div class="map-section__overlay-wrapper">
+                        <div class="map-section__overlay">
+                            <h3 class="h4">Our store</h3>
+                            <div class="rte-setting">
+                                {% for rs in contactus %}
+                                    <p>{{ rs.street }}<br>{{ rs.county }}, {{ rs.city }}</p>
+                                {% endfor %}
+                                <p>Monday - Friday : 09:00 - 19:00<br>
+                                    Saturday : 11:00 - 18:00<br>
+                                    Sunday : 11:00 - 17:00</p>
+                            </div>
+                            <p>
+                                <a href="https://goo.gl/maps/P7fE4ZQMsFxNTiMz5"
+                                   class="btn btn--secondary btn--small" target="_blank">Get directions</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bredcrumbWrap">
+            <div class="container breadcrumbs">
+                <a href="{% url 'home' %}" title="Back to the home page">Home</a><span aria-hidden="true">›</span><span>Contact Us</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-8 col-lg-8 mb-4">
+                    <h2>Write to us</h2>
+                    <p>If you have any questions, please email us and we will respond as soon as possible</p>
+                    <div class="formFeilds contact-form form-vertical">
+                        <form method="post" class="contact-form">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="name" placeholder="Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="email" name="email" placeholder="Email" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="phone" placeholder="Phone Number" value="+998"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="subject" placeholder="Subject" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <textarea rows="10" name="message" placeholder="Your Message"
+                                                  required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <input type="submit" class="btn" value="Send Message">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="open-hours">
+                        <strong>Opening Hours</strong><br><br>
+                        Monday - Friday : &nbsp;&nbsp;&nbsp;09:00 - 19:00<br>
+                        Saturday : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11:00
+                        - 18:00<br>
+                        Sunday : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11:00
+                        - 17:00
+                    </div>
+                    <hr/>
+                    {% for rs in information %}
+                        <ul class="addressFooter">
+                            <li><i class="icon anm anm-map-marker-al"></i>
+                                <p>{{ rs.address }}</p>
+                            </li>
+                            <li class="phone"><i class="icon anm anm-phone-s"></i>
+                                <a href="tel:{{ rs.phone }}"><p>{{ rs.phone }}</p></a></li>
+                            <li class="email"><i class="icon anm anm-envelope-l"></i>
+                                <a href="mailto:{{ rs.email }}"><p>{{ rs.email }}</p></a></li>
+                        </ul>
+                    {% endfor %}
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'includes/footer.html' %}
+
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+
+
+    <script src="{% static 'assets/js/vendor/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/modernizr-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/jquery.cookie.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/lazysizes.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+
+</div>
+
+</body>
+
+</html>

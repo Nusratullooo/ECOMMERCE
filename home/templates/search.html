@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+
+<head>
+    <title>Search</title>
+    {% include 'includes/head.html' %}
+</head>
+
+<body class="page-template belle">
+
+<div id="pre-loader">
+    <img src="{% static 'assets/images/loader.gif' %}" alt="Loading..."/>
+</div>
+
+<div class="pageWrapper">
+
+    {% include 'includes/header.html' %}
+
+    <div id="page-content">
+
+        <div class="page section-header text-center">
+            <div class="page-title">
+                <div class="wrapper"><h1 class="page-width">Search Result</h1></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                    <form method="post">
+                        <div class="wishlist-table table-content table-responsive">
+                            {% if product %}
+
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th class="product-price text-center alt-font">Images</th>
+                                        <th class="product-name text-center alt-font">Product</th>
+                                        <th class="product-price text-center alt-font">Old price</th>
+                                        <th class="stock-status text-center alt-font">Sell price</th>
+                                        <th class="product-subtotal text-center alt-font">Add to Cart</th>
+                                    </tr>
+                                    </thead>
+                                    {% for rs in product %}
+                                        <tbody>
+                                        <tr>
+                                            <td class="product-thumbnail text-center">
+                                                <img src="{{ rs.image.url }}"/>
+                                            </td>
+                                            <td class="product-name text-center">
+                                                <h2 class="no-margin">{{ rs.title }}</h2>
+                                            </td>
+                                            <td class="product-price text-center">
+                                                <h2><span class="amount">${{ rs.old_price }}</span></h2>
+                                            </td>
+                                            <td class="product-price text-center">
+                                                <h2><span class="amount">${{ rs.sell_price }}</span></h2>
+                                            </td>
+                                            <td class="product-subtotal text-center">
+                                                <a href="{% url 'product' rs.id rs.slug %}">
+                                                    <button type="button" class="btn btn-small">Add To Cart</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    {% endfor %}
+                                </table>
+
+                            {% else %}
+                                <h1 style="text-align: center"><span
+                                        style="text-decoration: underline;">{{ searched }}</span> WAS NOT FOUND</h1>
+                            {% endif %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {% include 'includes/footer.html' %}
+
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+
+
+    <script src="{% static 'assets/js/vendor/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/modernizr-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/jquery.cookie.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/lazysizes.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Melody Admin</title>
+  <link rel="stylesheet" href="{% static 'melody_static/vendors/iconfonts/font-awesome/css/all.min.css'%}">
+  <link rel="stylesheet" href="{% static 'melody_static/vendors/css/vendor.bundle.base.css'%}">
+  <link rel="stylesheet" href="{% static 'melody_static/vendors/css/vendor.bundle.addons.css'%}">
+  <link rel="stylesheet" href="{% static 'melody_static/css/style.css'%}">
+</head>
+
+<body oncontextmenu="return false">
+
+  <div class="container-scroller">
+
+   {% include 'Menu/client_top_dashbourd.html' %}
+
+    <div class="container-fluid page-body-wrapper">
+
+          {% include 'Menu/dashbourd_theme.html' %}
+
+          {% include 'Menu/client_dashbourd.html' %}
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">
+              Dashboard
+            </h3>
+          </div>
+
+        <div class="col-lg-12 grid-margin stretch-card table-wrapper-scroll-y my-custom-scrollbar">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">{% trans 'Orders'%}</h4>
+                  <p class="card-description">
+                    {% trans 'Count'%} <code>{{ order_product_count }}</code>
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            {% trans 'Code'%}
+                          </th>
+                          <th>
+                            {% trans 'First Name'%}
+                          </th>
+                          <th>
+                            {% trans 'Phone'%}
+                          </th>
+                          <th>
+                            {% trans 'Total'%}
+                          </th>
+                          <th>
+                            {% trans 'Status'%}
+                          </th>
+
+                          <th>
+                            {% trans 'Details'%}
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for rs in order_product %}
+                        <tr>
+                          <td class="py-1">
+                            {{ rs.order.code }}
+                          </td>
+                          <td>
+                            {{ rs.order.first_name }}
+                          </td>
+                          <td>
+                            {{ rs.order.phone }}
+                          </td>
+                          <td>
+                            {{ rs.order.total }}
+                          </td>
+                          <td>
+                            {{ rs.order.status }}
+                          </td>
+                          <td>
+                              <a href="{% url 'user_order_product_detail_client' rs.id rs.order.id %}"> <i class="fas fa-angle-double-right menu-icon"></i></a>
+                          </td>
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+
+
+
+      <style>
+          .my-custom-scrollbar {
+            position: relative;
+            height: 200px;
+            overflow: auto;
+            }
+          .table-wrapper-scroll-y {
+            display: block;
+            }
+      </style>
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="far fa-heart text-danger"></i></span>
+          </div>
+        </footer>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script src="{% static 'melody_static/vendors/js/vendor.bundle.base.js'%}"></script>
+  <script src="{% static 'melody_static/vendors/js/vendor.bundle.addons.js'%}"></script>
+  <script src="{% static 'melody_static/js/off-canvas.js'%}"></script>
+  <script src="{% static 'melody_static/js/hoverable-collapse.js'%}"></script>
+  <script src="{% static 'melody_static/js/misc.js'%}"></script>
+  <script src="{% static 'melody_static/js/settings.js'%}"></script>
+  <script src="{% static 'melody_static/js/todolist.js'%}"></script>
+  <script src="{% static 'melody_static/js/dashboard.js'%}"></script>
+
+</body>
+
+</html>

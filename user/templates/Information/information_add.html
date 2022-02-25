@@ -1,0 +1,200 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Melody Admin</title>
+    <link rel="stylesheet" href="{% static "melody_static/vendors/iconfonts/font-awesome/css/all.min.css" %}">
+    <link rel="stylesheet" href="{% static "melody_static/vendors/css/vendor.bundle.base.css" %}">
+    <link rel="stylesheet" href="{% static "melody_static/vendors/css/vendor.bundle.addons.css" %}">
+    <link rel="stylesheet" href="{% static "melody_static/css/style.css" %}">
+    <link rel="shortcut icon" href="{% static 'melody_static/images/favicon.png' %}"/>
+</head>
+
+<body>
+
+<div class="container-scroller">
+
+    {% include 'Menu/dashbourd_top_menu.html' %}
+
+    <div class="container-fluid page-body-wrapper">
+
+        {% include 'Menu/dashbourd_theme.html' %}
+
+        {% include 'Menu/dashbourd_left_menu.html' %}
+
+        <div class="main-panel">
+
+            <div class="content-wrapper">
+                <div class="page-header">
+                    <h3 class="card-title">{% trans 'Informatsion' %}</h3>
+                </div>
+                <div class="row">
+                    <div class="col-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <p class="card-description"></p>
+
+                                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Title [EN]' %}</label>
+                                        <input type="text" name="title_en" class="form-control"
+                                               placeholder="Title in EN ..." required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Title [RU]' %}</label>
+                                        <input type="text" name="title_ru" class="form-control"
+                                               placeholder="Title in RU ..." required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Title [UZ]' %}</label>
+                                        <input type="text" name="title_uz" class="form-control"
+                                               placeholder="Title in UZ ..." required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Country' %}</label>
+                                        <input type="text" name="country" class="form-control"
+                                               placeholder="Country ..." required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'City' %}</label>
+                                        <input type="text" name="city" class="form-control" placeholder="City ..."
+                                               required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Address [EN]' %}</label>
+                                        <input type="text" name="address_en" class="form-control"
+                                               placeholder="Address in EN ..." required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Address [RU]' %}</label>
+                                        <input type="text" name="address_ru" class="form-control"
+                                               placeholder="Address in RU ..." required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Address [UZ]' %}</label>
+                                        <input type="text" name="address_uz" class="form-control"
+                                               placeholder="Address in UZ ..." required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Phone' %}</label>
+                                        <input type="tel" name="phone" class="form-control" placeholder="Phone number ..."
+                                               required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Email' %}</label>
+                                        <input type="email" name="email" class="form-control" placeholder="E-mail ..."
+                                               required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Telegram' %}</label>
+                                        <input type="text" name="telegram" class="form-control"
+                                               placeholder="Nickname in Telegram ..." required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Instagram' %}</label>
+                                        <input type="text" name="instagram" class="form-control"
+                                               placeholder="Nickname in Instagram ..." required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Facebook' %}</label>
+                                        <input type="text" name="facebook" class="form-control"
+                                               placeholder="Nickname in Facebook ..." required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Twitter' %}</label>
+                                        <input type="text" name="twitter" class="form-control"
+                                               placeholder="Nickname ..." required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Image' %}</label>
+                                        <input type="file" name="image" class="file-upload-default">
+                                        <div class="input-group col-xs-12">
+                                            <input type="text" name="image" class="form-control file-upload-info"
+                                                   disabled placeholder="Upload image ..." required>
+                                            <span class="input-group-append">
+                                                <button class="file-upload-browse btn btn-primary" name="image"
+                                                        type="button">{% trans 'Upload' %}</button>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Description EN' %}</label>
+                                        <textarea name="description_en" class="form-control" rows="4"
+                                                  placeholder="Description in EN ..." required></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Description RU' %}</label>
+                                        <textarea name="description_ru" class="form-control" rows="4"
+                                                  placeholder="Description in RU ..." required></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{% trans 'Description UZ' %}</label>
+                                        <textarea name="description_uz" class="form-control" rows="4"
+                                                  placeholder="Description in UZ ..." required></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Status</label>
+                                        <select class="form-control" name="status">
+                                            <option
+                                            {{ form.status }}</option>
+                                        </select>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary mr-2">{% trans 'Submit' %}</button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% include 'Menu/footer.html' %}
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="{% static "melody_static/vendors/js/vendor.bundle.base.js" %}"></script>
+<script src="{% static "melody_static/vendors/js/vendor.bundle.addons.js" %}"></script>
+<script src="{% static "melody_static/js/off-canvas.js" %}"></script>
+<script src="{% static "melody_static/js/hoverable-collapse.js" %}"></script>
+<script src="{% static "melody_static/js/misc.js" %}"></script>
+<script src="{% static "melody_static/js/settings.js" %}"></script>
+<script src="{% static "melody_static/js/todolist.js" %}"></script>
+<script src="{% static "melody_static/js/file-upload.js" %}"></script>
+<script src="{% static "melody_static/js/typeahead.js" %}"></script>
+<script src="{% static "melody_static/js/select2.js" %}"></script>
+
+</body>
+
+</html>

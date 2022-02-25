@@ -1,0 +1,194 @@
+{% load static %}
+{% load i18n %}
+
+<div class="search">
+    <div class="search__form">
+        <form action="{% url 'search' %}" method="post" class="search-bar__form">
+            {% csrf_token %}
+            <button class="go-btn search__button" type="submit">
+                <i class="icon anm anm-search-l"></i>
+            </button>
+            <input class="search__input" type="search" name="searched" placeholder="Search ...">
+        </form>
+        <button type="button" class="search-trigger close-btn">
+            <i class="anm anm-times-l"></i>
+        </button>
+    </div>
+</div>
+
+<div class="top-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-10 col-sm-8 col-md-5 col-lg-4">
+                <div style="display: flex; justify-content: flex-start; align-items: flex-end;">
+                    <div class="language-dropdown">
+                        <form class="form-inline" action="{% url 'selectlanguage' %}" method="post">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}">
+                            <select name="language" onchange="submit()"
+                                    style="border: none; height: 100%; background-color: grey;">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+                                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                                            selected{% endif %}>
+                                        {{ language.name_local }} ({{ language.code }})
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <noscript>
+                                <input type="submit" value="Set"/>
+                            </noscript>
+                        </form>
+                    </div>
+                    {% for rs in information %}
+                        <p class="phone-no ml-4"><i class="anm anm-phone-s"></i> <a
+                                href="tel:{{ information.phone }}">&nbsp;{{ rs.phone }}</a></p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
+                <div class="text-center"><p class="top-header_middle-text">ECOMMERCE</p></div>
+            </div>
+            <div class="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
+                <span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
+                <ul class="customer-links list-inline">
+                    {% if user.id is not None %}
+                        <li><a href="{% url 'client' %}">MY PROFILE</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login_form' %}">{% trans 'Login' %}</a></li>
+                        <li><a href="{% url 'register' %}">{% trans 'Create Account' %}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-wrap animated d-flex">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'assets/images/logo.svg' %}">
+                </a>
+            </div>
+            <div class="col-2 col-sm-3 col-md-3 col-lg-8">
+                <div class="d-block d-lg-none">
+                    <button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open">
+                        <i class="icon anm anm-times-l"></i>
+                        <i class="anm anm-bars-r"></i>
+                    </button>
+                </div>
+                <nav class="grid__item" id="AccessibleNav">
+                    <ul id="siteNav" class="site-nav medium center hidearrow">
+                        <li class="lvl1 parent dropdown"><a href="{% url 'home' %}">{% trans 'Home' %}<i
+                                class="anm anm-angle-down-l"></i></a></li>
+                        <li class="lvl1 parent dropdown"><a href="#">{% trans 'Category' %}<i
+                                class="anm anm-angle-down-l"></i></a>
+                            <ul class="dropdown">
+                                {% for rs in category %}
+                                    <li><a href="{% url 'category' rs.id rs.slug %}"
+                                           class="site-nav">{{ rs.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="lvl1 parent dropdown"><a href="{% url 'about' %}">{% trans 'About us' %}<i
+                                class="anm anm-angle-down-l"></i></a></li>
+                        <li class="lvl1 parent dropdown"><a href="{% url 'news' %}">{% trans 'News' %}<i
+                                class="anm anm-angle-down-l"></i></a>
+                        </li>
+                        <li class="lvl1 parent dropdown"><a href="{% url 'faq' %}">{% trans 'F.A.Q.' %}<i
+                                class="anm anm-angle-down-l"></i></a>
+                        </li>
+                        <li class="lvl1 parent dropdown"><a href="{% url 'contact' %}">{% trans 'Contact' %}<i
+                                class="anm anm-angle-down-l"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
+                <div class="logo">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'assets/images/logo.svg' %}">
+                    </a>
+                </div>
+            </div>
+            <div class="col-4 col-sm-3 col-md-3 col-lg-2">
+                <div class="site-cart">
+                    <a href="#" class="site-header__cart" title="Cart">
+                        <i class="icon anm anm-bag-l"></i>
+                        <span id="CartCount" class="site-header__cart-count"
+                              data-cart-render="item_count">{{ shopcart_count }}</span>
+                    </a>
+                    <div id="header-cart" class="block block-cart">
+                        <ul class="mini-products-list">
+                            {% if shopcart %}
+                                {% for rs in shopcart %}
+                                    <li class="item">
+                                        <a class="product-image" href="#">
+                                            <img src="{{ rs.product.image.url }}"/>
+                                        </a>
+                                        <div class="product-details">
+                                            <a href="{% url 'deletefromcart' rs.id %}" class="remove"
+                                               onclick="return confirm('{% trans 'Delete! Are you sure?' %}')">
+                                                <i class="anm anm-times-l" aria-hidden="true"></i>
+                                            </a>
+                                            <a class="pName" href="#">{{ rs.product.title }}</a>
+                                            <div class="mt-3">
+                                                <span>{% trans 'Quantity' %} : {{ rs.quantity }}</span>
+                                            </div>
+                                            <div class="priceRow mt-2">
+                                                <div class="product-price">
+                                                    <span class="money">${{ rs.product.sell_price }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                                <div class="total">
+                                    <div class="total-in">
+                                        <span class="label">{% trans 'Cart Subtotal' %}:</span>
+                                        <span class="product-price">
+                                                <span class="money">${{ total }}</span>
+                                            </span>
+                                    </div>
+                                    <div class="buttonSet text-center">
+                                        <a href="{% url 'shopcart' %}"
+                                           class="btn btn-secondary btn--small">{% trans 'View Shopcart' %}</a>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <h3>{% trans 'You have not selected a product yet' %}</h3>
+                            {% endif %}
+                    </div>
+                </div>
+                <div class="site-header__search">
+                    <button type="button" class="search-trigger"><i class="icon anm anm-search-l"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mobile-nav-wrapper" role="navigation">
+    <div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> {% trans 'CLOSE MENU' %}</div>
+    <ul id="MobileNav" class="mobile-nav">
+        <li class="lvl1 parent megamenu"><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
+        <li class="lvl1 parent megamenu"><a href="#">{% trans 'Category' %}<i class="anm anm-plus-l"></i></a>
+            <ul>
+                {% for rs in product_all %}
+                    <li>
+                        <a href="{% url 'product' rs.id rs.slug %}" class="site-nav">{{ rs.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="lvl1 parent megamenu"><a href="{% url 'about' %}">{% trans 'About us' %}</a></li>
+        <li class="lvl1 parent megamenu"><a href="{% url 'news' %}">{% trans 'News' %}</a></li>
+        <li class="lvl1 parent megamenu"><a href="{% url 'faq' %}">{% trans 'F.A.Q.' %}</a></li>
+        <li class="lvl1 parent megamenu"><a href="{% url 'contact' %}">{% trans 'Contact' %}</a></li>
+    </ul>
+</div>

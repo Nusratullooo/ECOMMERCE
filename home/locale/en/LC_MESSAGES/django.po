@@ -1,0 +1,263 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-06 16:04+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: home/templates/includes/dashbourd_menu.html:17
+msgid "Super Admin"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:28
+msgid "Dashboard"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:36
+#: home/templates/includes/footer.html:45
+msgid "Information"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:44
+msgid "Add Info"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:50
+msgid "Update Info"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:60
+#: home/templates/includes/header.html:85
+#: home/templates/includes/header.html:177
+msgid "Category"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:68
+msgid "Add Category"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:74
+msgid "Update Category"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:84
+msgid "Product"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:92
+msgid "Add Product"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:98
+msgid "Update Product"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:108
+msgid "Editors"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:132
+msgid "Users"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:139
+msgid "Update Admin"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:146
+msgid "Change Password"
+msgstr ""
+
+#: home/templates/includes/dashbourd_menu.html:153
+msgid "Logout"
+msgstr ""
+
+#: home/templates/includes/footer.html:12
+msgid "sign up for"
+msgstr ""
+
+#: home/templates/includes/footer.html:12
+msgid "newsletter"
+msgstr ""
+
+#: home/templates/includes/footer.html:21
+msgid "Subscribe"
+msgstr ""
+
+#: home/templates/includes/footer.html:37
+msgid "Categories"
+msgstr ""
+
+#: home/templates/includes/footer.html:47
+#: home/templates/includes/header.html:83
+#: home/templates/includes/header.html:176
+msgid "Home"
+msgstr ""
+
+#: home/templates/includes/footer.html:48
+#: home/templates/includes/header.html:96
+msgid "News"
+msgstr ""
+
+#: home/templates/includes/footer.html:49
+msgid "My Account"
+msgstr ""
+
+#: home/templates/includes/footer.html:53
+msgid "Services"
+msgstr ""
+
+#: home/templates/includes/footer.html:55
+#: home/templates/includes/header.html:94
+#: home/templates/includes/header.html:186
+msgid "About us"
+msgstr ""
+
+#: home/templates/includes/footer.html:56
+msgid "FAQs"
+msgstr ""
+
+#: home/templates/includes/footer.html:57
+#: home/templates/includes/footer.html:61
+msgid "Contact Us"
+msgstr ""
+
+#: home/templates/includes/footer.html:65
+msgid "district"
+msgstr ""
+
+#: home/templates/includes/footer.html:65
+msgid "street"
+msgstr ""
+
+#: home/templates/includes/footer.html:66
+msgid "house"
+msgstr ""
+
+#: home/templates/includes/header.html:57
+msgid "Login"
+msgstr ""
+
+#: home/templates/includes/header.html:58
+msgid "Create Account"
+msgstr ""
+
+#: home/templates/includes/header.html:99
+#: home/templates/includes/header.html:188
+msgid "F.A.Q."
+msgstr ""
+
+#: home/templates/includes/header.html:102
+#: home/templates/includes/header.html:189
+msgid "Contact"
+msgstr ""
+
+#: home/templates/includes/header.html:132
+msgid "Delete! Are you sure?"
+msgstr ""
+
+#: home/templates/includes/header.html:137
+msgid "Quantity"
+msgstr ""
+
+#: home/templates/includes/header.html:150
+msgid "Cart Subtotal"
+msgstr ""
+
+#: home/templates/includes/header.html:157
+msgid "View Shopcart"
+msgstr ""
+
+#: home/templates/includes/header.html:161
+msgid "You have not selected a product yet"
+msgstr ""
+
+#: home/templates/includes/header.html:174
+msgid "CLOSE MENU"
+msgstr ""
+
+#: home/templates/includes/header.html:187
+msgid "News"
+msgstr ""
+
+#: home/templates/index.html:15
+msgid "Loading..."
+msgstr ""
+
+#: home/templates/index.html:33
+msgid "Shop Our New Collection"
+msgstr ""
+
+#: home/templates/index.html:34
+msgid "From Hight to low, classic or modern. We have you covered"
+msgstr ""
+
+#: home/templates/index.html:47
+msgid "Summer Bikini Collection"
+msgstr ""
+
+#: home/templates/index.html:48
+#, python-format
+msgid "Save up to 50%% off this weekend only"
+msgstr ""
+
+#: home/templates/index.html:62
+msgid "New products"
+msgstr ""
+
+#: home/templates/index.html:63
+msgid "New products that have just been added"
+msgstr ""
+
+#: home/templates/index.html:130
+msgid "Popular Products"
+msgstr ""
+
+#: home/templates/index.html:131
+msgid "Popular products that are bought most often"
+msgstr ""
+
+#: home/templates/index.html:173
+msgid "Free Shipping & Return"
+msgstr ""
+
+#: home/templates/index.html:174
+msgid "Free shipping on all Tashkent orders"
+msgstr ""
+
+#: home/templates/index.html:178
+msgid "Money Guarantee"
+msgstr ""
+
+#: home/templates/index.html:179
+msgid "30 days money back guarantee"
+msgstr ""
+
+#: home/templates/index.html:183
+msgid "Online Support"
+msgstr ""
+
+#: home/templates/index.html:184
+msgid "We support online 24 / 7 on day"
+msgstr ""
+
+#: home/templates/index.html:188
+msgid "Secure Payments"
+msgstr ""
+
+#: home/templates/index.html:189
+msgid "All payment are Secured and trusted"
+msgstr ""
