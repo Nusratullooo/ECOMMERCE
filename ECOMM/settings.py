@@ -11,12 +11,9 @@ from django.utils.translation import gettext_lazy as _
 
 SECRET_KEY = env.str("SECRET_KEY")
 
-# SECRET_KEY=
-
-
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['24live.uz']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
